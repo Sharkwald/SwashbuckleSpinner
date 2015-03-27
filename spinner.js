@@ -4,9 +4,10 @@ function debug(message) {
 
 function randomSelect() {
   var rotator = Math.floor(Math.random() * 360);
-  $(".image").css("text-indent", 0).animate({  textIndent: rotator + "px" }, { step : function (now) {
+  $(".image").css("text-indent", 0);
+  $(".image").animate({  textIndent: rotator + "px" }, { step : function (now) {
     $(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
-  }, duration: 2000 }, "linear");
+  }, duration: 2000, easing: "easeOutQuad" });
 }
 
 function doTheSpin() {
