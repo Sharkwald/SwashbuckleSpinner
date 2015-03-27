@@ -4,13 +4,15 @@ function debug(message) {
   $("#debug").text(message);
 }
 
+function slowDownStep(now) {
+  $(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+}
+
 function endTheSpin() {
-  $("#image").removeClass('spinning');
+  theSpinner.removeClass('spinning');
   var rotator = Math.floor(Math.random() * 360);
-  $("#image").css("text-indent", 0);
-  $("#image").animate({  textIndent: rotator + "px" }, { step : function (now) {
-    $(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
-  }, duration: 2000, easing: "easeOutQuad" });
+  theSpinner.css("text-indent", 0);
+  theSpinner.animate({textIndent: rotator + "px" }, {step : slowDownStep, duration: 2000, easing: "easeOutQuad" });
 }
 
 function resetSpinner() {
